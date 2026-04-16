@@ -1,0 +1,87 @@
+{
+    "port": 5000,
+    "activePreset": "徐子轩",
+    "presets": {
+        "徐子轩": {
+            "providerType": "generic",
+            "defaultModel": "nano-banana",
+            "url": "https://yunwu.ai/v1beta/models/{{model}}:generateContent",
+            "apiKey": "sk-GbzrLvEsTCTqpX6BjLc1IYiclsISrtBd6HBnw386RGYpWrAu",
+            "headers": {
+                "Authorization": "Bearer {{apiKey}}",
+                "Content-Type": "application/json"
+            },
+            "modelMapping": {
+                "nano-banana": "gemini-3-pro-image-preview",
+                "banana": "gemini-3-pro-image-preview",
+                "nano-banana-pro": "gemini-3-pro-image-preview",
+                "banana-pro": "gemini-3-pro-image-preview",
+                "nano-banana-2": "gemini-3.1-flash-image-preview",
+                "nano-banana2": "gemini-3.1-flash-image-preview",
+                "banana2": "gemini-3.1-flash-image-preview",
+                "gemini-3-pro-image-preview": "gemini-3-pro-image-preview",
+                "gemini-3.1-flash-image-preview": "gemini-3.1-flash-image-preview"
+            },
+            "payloadTemplate": {
+                "contents": [
+                    {
+                        "role": "user",
+                        "parts": [
+                            {
+                                "text": "{{prompt}}"
+                            }
+                        ]
+                    }
+                ],
+                "generationConfig": {
+                    "responseModalities": [
+                        "IMAGE"
+                    ],
+                    "imageConfig": {
+                        "aspectRatio": "{{aspect_ratio}}",
+                        "imageSize": "{{providerResolution}}"
+                    }
+                }
+            },
+            "editPayloadTemplate": {
+                "contents": [
+                    {
+                        "role": "user",
+                        "parts": "{{geminiParts}}"
+                    }
+                ],
+                "generationConfig": {
+                    "responseModalities": [
+                        "IMAGE"
+                    ],
+                    "imageConfig": {
+                        "aspectRatio": "{{aspect_ratio}}",
+                        "imageSize": "{{providerResolution}}"
+                    }
+                }
+            },
+            "resultPath": [
+                "candidates[0].content.parts[0].inlineData.data",
+                "candidates[0].content.parts[1].inlineData.data",
+                "candidates[0].content.parts[2].inlineData.data",
+                "candidates[0].content.parts[0].inline_data.data",
+                "candidates[0].content.parts[1].inline_data.data",
+                "candidates[0].content.parts[2].inline_data.data",
+                "candidates[0].content.parts[0].text",
+                "candidates[0].content.parts[1].text",
+                "candidates[0].content.parts[2].text"
+            ],
+            "editResultPath": [
+                "candidates[0].content.parts[0].inlineData.data",
+                "candidates[0].content.parts[1].inlineData.data",
+                "candidates[0].content.parts[2].inlineData.data",
+                "candidates[0].content.parts[0].inline_data.data",
+                "candidates[0].content.parts[1].inline_data.data",
+                "candidates[0].content.parts[2].inline_data.data",
+                "candidates[0].content.parts[0].text",
+                "candidates[0].content.parts[1].text",
+                "candidates[0].content.parts[2].text"
+            ]
+        }
+    }
+}
